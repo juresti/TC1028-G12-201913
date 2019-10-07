@@ -1,11 +1,17 @@
 def crearMatriz(numRen,numCol,valorInicial):
     matriz = []
     #renglon = [valorInicial] * numCol
-    renglon = []
-    for elem in range(numCol):
-        renglon.append(valorInicial)
-        
-    for valor in range(numRen):
+#    renglon = []
+#    for elem in range(numCol):
+#        renglon.append(valorInicial)
+#        
+#    for valor in range(numRen):
+#        matriz.append(renglon)
+
+    for ren in range(numRen):
+        renglon = []
+        for col in range(numCol):
+            renglon.append(valorInicial)
         matriz.append(renglon)
     return matriz
 
@@ -58,5 +64,18 @@ def mismoTamano(matriz1,matriz2) :
         print("Matriz 1 tiene {0} renglones y la 2 tiene {1}".format(renM1,renM2))
         return False
     
-    
-    
+def sumarMatrices(matriz1,matriz2):
+    if mismoTamano(matriz1,matriz2):
+        numRen, numCol = tamanoMatriz(matriz1)
+        nueva = crearMatriz(numRen,numCol,0)
+        
+        for ren in range(len(matriz1)):
+            for col in range(len(matriz1[0])):
+                nueva[ren][col] = matriz1[ren][col] + matriz2[ren][col]
+                
+        return nueva     
+    else:
+        print("Las matrices deben ser del mismo tamaño")
+        return []
+            
+sumarMatrices([[3,7],[10,21]],[[13,12],[9,2]])   
